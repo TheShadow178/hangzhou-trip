@@ -72,8 +72,8 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
-  - path: javascripts/extra.js
-    type: module
+  - javascripts/vendor/mermaid.min.js
+  - javascripts/mermaid-init.js
 
 plugins:
   - search:

@@ -1,0 +1,502 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "萧山机场 T3",
+        "type": "机场",
+        "marker-size": "medium",
+        "marker-color": "#dc2626",
+        "marker-symbol": "airport"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.429124,
+          30.236873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "海创园酒店",
+        "type": "住宿",
+        "marker-size": "medium",
+        "marker-color": "#7c3aed",
+        "marker-symbol": "lodging"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.000997,
+          30.27477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "EFC（新榆园／淳院）",
+        "type": "餐饮",
+        "marker-size": "medium",
+        "marker-color": "#ea580c",
+        "marker-symbol": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.995637,
+          30.285056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "小河直街",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.130386,
+          30.310137
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "京杭大运河博物馆",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.136989,
+          30.319719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "拱宸桥／桥西",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.134947,
+          30.320467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "万象城／外婆家",
+        "type": "餐饮与休息",
+        "marker-size": "medium",
+        "marker-color": "#ea580c",
+        "marker-symbol": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.209389,
+          30.254417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "城市阳台",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.212496,
+          30.244199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "西泠桥定点",
+        "type": "换乘",
+        "marker-size": "medium",
+        "marker-color": "#0d9488",
+        "marker-symbol": "bus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.133975,
+          30.254042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "浙江省博物馆孤山馆区",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.138783,
+          30.253531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "楼外楼孤山店",
+        "type": "餐饮",
+        "marker-size": "medium",
+        "marker-color": "#ea580c",
+        "marker-symbol": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.136068,
+          30.252655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "西泠印社",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.135498,
+          30.252792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "平湖秋月",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.141613,
+          30.254202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "白堤东端／断桥",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.147367,
+          30.261531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "乔村二十八道（天目里锚点）",
+        "type": "餐饮",
+        "marker-size": "medium",
+        "marker-color": "#ea580c",
+        "marker-symbol": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.095419,
+          30.268006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "西溪湿地周家村入口",
+        "type": "景点",
+        "marker-size": "medium",
+        "marker-color": "#2563eb",
+        "marker-symbol": "star"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.056453,
+          30.257327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "兰记牛府（同顺街锚点）",
+        "type": "餐饮",
+        "marker-size": "medium",
+        "marker-color": "#ea580c",
+        "marker-symbol": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.027433,
+          30.291219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "墨绿 Art Space（文三路站片区锚点）",
+        "type": "餐饮",
+        "marker-size": "medium",
+        "marker-color": "#ea580c",
+        "marker-symbol": "restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.122734,
+          30.279045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "10月2日 主线",
+        "transport": "地铁／公交／步行",
+        "stroke": "#7c3aed",
+        "stroke-width": 4,
+        "stroke-opacity": 0.8
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            120.429124,
+            30.236873
+          ],
+          [
+            120.000997,
+            30.27477
+          ],
+          [
+            119.995637,
+            30.285056
+          ],
+          [
+            120.130386,
+            30.310137
+          ],
+          [
+            120.000997,
+            30.27477
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "10月3日 主线",
+        "transport": "地铁／公交／步行",
+        "stroke": "#ea580c",
+        "stroke-width": 4,
+        "stroke-opacity": 0.8
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            120.000997,
+            30.27477
+          ],
+          [
+            120.136989,
+            30.319719
+          ],
+          [
+            120.134947,
+            30.320467
+          ],
+          [
+            120.209389,
+            30.254417
+          ],
+          [
+            120.212496,
+            30.244199
+          ],
+          [
+            120.000997,
+            30.27477
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "10月4日 主线",
+        "transport": "地铁／公交／步行",
+        "stroke": "#2563eb",
+        "stroke-width": 4,
+        "stroke-opacity": 0.8
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            120.000997,
+            30.27477
+          ],
+          [
+            120.133975,
+            30.254042
+          ],
+          [
+            120.138783,
+            30.253531
+          ],
+          [
+            120.136068,
+            30.252655
+          ],
+          [
+            120.135498,
+            30.252792
+          ],
+          [
+            120.141613,
+            30.254202
+          ],
+          [
+            120.147367,
+            30.261531
+          ],
+          [
+            120.095419,
+            30.268006
+          ],
+          [
+            120.000997,
+            30.27477
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "10月5日 主线",
+        "transport": "地铁／公交／步行",
+        "stroke": "#16a34a",
+        "stroke-width": 4,
+        "stroke-opacity": 0.8
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            120.000997,
+            30.27477
+          ],
+          [
+            120.056453,
+            30.257327
+          ],
+          [
+            119.995637,
+            30.285056
+          ],
+          [
+            120.000997,
+            30.27477
+          ],
+          [
+            120.027433,
+            30.291219
+          ],
+          [
+            120.000997,
+            30.27477
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "10月6日 主线",
+        "transport": "地铁／公交／步行",
+        "stroke": "#dc2626",
+        "stroke-width": 4,
+        "stroke-opacity": 0.8
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            120.000997,
+            30.27477
+          ],
+          [
+            120.122734,
+            30.279045
+          ],
+          [
+            120.429124,
+            30.236873
+          ]
+        ]
+      }
+    }
+  ]
+}

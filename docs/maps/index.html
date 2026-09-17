@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>杭州国庆旅行 · 交互地图</title>
+  <link rel="stylesheet" href="../stylesheets/vendor/leaflet.css">
+  <style>
+    :root {
+      --ink: #0f172a; --muted: #64748b; --line: #e2e8f0; --bg: #ffffff;
+      --day2: #7c3aed; --day3: #ea580c; --day4: #2563eb; --day5: #16a34a; --day6: #dc2626;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; font-family: -apple-system, BlinkMacSystemFont,
+      "PingFang SC", "Microsoft YaHei", sans-serif; color: var(--ink); }
+    #bar {
+      position: fixed; inset: 0 0 auto 0; z-index: 1000; background: var(--bg);
+      border-bottom: 1px solid var(--line); padding: 8px 12px;
+      display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center;
+    }
+    #bar a { color: var(--muted); text-decoration: none; font-size: 14px; white-space: nowrap; }
+    #bar a:hover { color: var(--ink); }
+    .tabs { display: flex; gap: 4px; }
+    .tab {
+      border: 1px solid var(--line); background: #f8fafc; color: var(--ink);
+      padding: 5px 12px; border-radius: 999px; font-size: 13px; cursor: pointer;
+    }
+    .tab.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .days { display: flex; gap: 8px 12px; flex-wrap: wrap; font-size: 13px; }
+    .days label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; white-space: nowrap; }
+    .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    #map { position: absolute; inset: 56px 0 0 0; }
+    #legend {
+      position: fixed; left: 12px; bottom: 18px; z-index: 1000; background: rgba(255,255,255,.94);
+      border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 12.5px;
+      line-height: 1.9; box-shadow: 0 4px 14px rgba(15,23,42,.08);
+    }
+    #legend b { margin-right: 4px; }
+    @media (max-width: 640px) {
+      #bar { inset: 0 0 auto 0; padding: 6px 10px; gap: 6px 10px; }
+      #map { inset: 88px 0 0 0; }
+      #legend { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="bar">
+    <a href="../">← 返回旅行计划</a>
+    <div class="tabs" id="tabs"></div>
+    <div class="days" id="days"></div>
+  </div>
+  <div id="map"></div>
+  <div id="legend">
+    <div><span style="font-size:15px">✈️</span> 机场　<span style="font-size:15px">🏨</span> 住宿　<span style="font-size:15px">🍜</span> 餐饮</div>
+    <div><span style="font-size:15px">🏛️</span> 景点　<span style="font-size:15px">🚌</span> 换乘　<span style="font-size:15px">🅿️</span> 停车换乘</div>
+  </div>
+
+  <script src="../javascripts/vendor/leaflet.js"></script>
+  <script>
+  const SCHEMES = [
+    { id: "taxi",       label: "纯打车",   file: "taxi.geojson" },
+    { id: "self-drive", label: "租车自驾", file: "self-drive.geojson" },
+    { id: "transit",    label: "公共交通", file: "transit.geojson" }
+  ];
+  const DAY_COLORS = { 2: "#7c3aed", 3: "#ea580c", 4: "#2563eb", 5: "#16a34a", 6: "#dc2626" };
+  const ICONS = { "机场": "✈️", "住宿": "🏨", "餐饮": "🍜", "餐饮与休息": "🍽️",
+                  "景点": "🏛️", "换乘": "🚌", "停车换乘": "🅿️" };
+
+  const map = L.map("map", { zoomControl: true, attributionControl: true })
+    .setView([30.27, 120.12], 12);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  }).addTo(map);
+
+  const cache = {};
+  let current = null;          // 当前方案 L.layerGroup
+  let dayGroups = {};          // 每天的连线图层
+
+  function marker(feature, latlng) {
+    const p = feature.properties || {};
+    const color = p["marker-color"] || "#334155";
+    const icon = L.divIcon({
+      className: "",
+      html: '<div style="background:' + color + ';width:26px;height:26px;border-radius:50% 50% 50% 0;'
+          + 'transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);'
+          + 'display:flex;align-items:center;justify-content:center">'
+          + '<span style="transform:rotate(45deg);font-size:12px;line-height:1">'
+          + (ICONS[p.type] || "📍") + '</span></div>',
+      iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24]
+    });
+    return L.marker(latlng, { icon });
+  }
+
+  function buildScheme(data) {
+    const group = L.layerGroup();
+    dayGroups = {};
+    data.features.forEach(f => {
+      if (f.geometry.type === "Point") {
+        L.geoJSON(f, { pointToLayer: marker })
+          .bindPopup("<b>" + (f.properties.name || "") + "</b><br>" + (f.properties.type || ""))
+          .addTo(group);
+      } else {
+        const m = (f.properties.name || "").match(/(\d)\s*月(\d)\s*日/);
+        const day = m ? Number(m[2]) : null;
+        const line = L.geoJSON(f, {
+          style: {
+            color: f.properties.stroke || "#2563eb",
+            weight: f.properties["stroke-width"] || 4,
+            opacity: f.properties["stroke-opacity"] || 0.8
+          }
+        }).bindPopup("<b>" + (f.properties.name || "") + "</b><br>" + (f.properties.transport || ""));
+        if (day) { dayGroups[day] = dayGroups[day] || L.layerGroup(); line.addTo(dayGroups[day]); }
+        line.addTo(group);
+      }
+    });
+    return group;
+  }
+
+  async function show(schemeId) {
+    if (current) { map.removeLayer(current); }
+    if (!cache[schemeId]) {
+      const s = SCHEMES.find(x => x.id === schemeId);
+      cache[schemeId] = await fetch(s.file).then(r => r.json());
+    }
+    current = buildScheme(cache[schemeId]);
+    current.addTo(map);
+    Object.values(dayGroups).forEach(g => g.addTo(map));
+    map.fitBounds(L.geoJSON(cache[schemeId]).getBounds(), { padding: [36, 36] });
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.dataset.id === schemeId));
+    history.replaceState(null, "", "#" + schemeId);
+  }
+
+  function toggleDay(day, on) {
+    const g = dayGroups[day];
+    if (!g) return;
+    if (on && !map.hasLayer(g)) g.addTo(map);
+    if (!on && map.hasLayer(g)) map.removeLayer(g);
+  }
+
+  // 构建选项卡与按天开关
+  const tabsEl = document.getElementById("tabs");
+  SCHEMES.forEach(s => {
+    const b = document.createElement("button");
+    b.className = "tab"; b.dataset.id = s.id; b.textContent = s.label;
+    b.onclick = () => show(s.id);
+    tabsEl.appendChild(b);
+  });
+  const daysEl = document.getElementById("days");
+  Object.entries(DAY_COLORS).forEach(([d, c]) => {
+    const lab = document.createElement("label");
+    lab.innerHTML = '<input type="checkbox" checked data-day="' + d + '">'
+      + '<span class="swatch" style="background:' + c + '"></span>10 月 ' + d + ' 日';
+    lab.querySelector("input").onchange = e => toggleDay(Number(d), e.target.checked);
+    daysEl.appendChild(lab);
+  });
+
+  const start = SCHEMES.some(s => s.id === location.hash.slice(1)) ? location.hash.slice(1) : "taxi";
+  show(start);
+  </script>
+</body>
+</html>

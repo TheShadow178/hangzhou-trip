@@ -1,0 +1,120 @@
+:root {
+  --md-text-font: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --md-code-font: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+/* Mermaid 图块居中并留出呼吸空间 */
+.mermaid {
+  text-align: center;
+  margin: 1.2em 0;
+  overflow-x: auto;
+}
+
+/* 宽表格由 Material 自动包裹，保证手机端可横向滚动 */
+.md-typeset__scrollwrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* 文档导航链接更紧凑 */
+.md-typeset ul li {
+  margin-top: 0.15em;
+}
+
+/* 提示框内的段落不留多余边距 */
+.md-typeset .admonition > :last-child {
+  margin-bottom: 0.6rem;
+}
+
+/* ---------- 首页 Hero ---------- */
+.tx-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 42%, #fef3c7 100%);
+  border-bottom: 1px solid #fed7aa;
+}
+.tx-hero::after {
+  content: "";
+  position: absolute;
+  right: -120px; top: -120px;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234,88,12,.16), transparent 68%);
+  pointer-events: none;
+}
+.tx-hero-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 72px 24px 64px;
+  position: relative;
+  z-index: 1;
+}
+.tx-hero-badge {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: .12em;
+  color: #9a3412;
+  background: rgba(255,255,255,.72);
+  border: 1px solid #fdba74;
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin-bottom: 18px;
+}
+.tx-hero-title {
+  margin: 0 0 10px;
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: 800;
+  color: #1c1917;
+  letter-spacing: .02em;
+}
+.tx-hero-sub {
+  margin: 0 0 14px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #7c2d12;
+}
+.tx-hero-desc {
+  margin: 0 0 26px;
+  color: #57534e;
+  font-size: 15px;
+  line-height: 1.85;
+}
+.tx-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.tx-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: 1px solid #fdba74;
+  background: rgba(255,255,255,.85);
+  color: #9a3412;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.tx-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(154,52,18,.14); }
+.tx-btn-primary { background: #ea580c; border-color: #ea580c; color: #fff; }
+.tx-hero-chips {
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+  margin-top: 26px;
+  font-size: 13px;
+  color: #78716c;
+}
+.tx-hero-chips span { display: inline-flex; align-items: center; gap: 6px; }
+.tx-hero-chips i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+@media (max-width: 640px) {
+  .tx-hero-inner { padding: 48px 18px 40px; }
+  .tx-br { display: none; }
+}
+[data-md-color-scheme="slate"] .tx-hero {
+  background: linear-gradient(135deg, #2a1d12 0%, #33210f 55%, #2b2113 100%);
+  border-bottom: 1px solid #57391c;
+}
+[data-md-color-scheme="slate"] .tx-hero-title { color: #f5f5f4; }
+[data-md-color-scheme="slate"] .tx-hero-sub,
+[data-md-color-scheme="slate"] .tx-hero-desc,
+[data-md-color-scheme="slate"] .tx-hero-chips { color: #d6d3d1; }
+[data-md-color-scheme="slate"] .tx-hero-badge,
+[data-md-color-scheme="slate"] .tx-btn { background: rgba(41,27,18,.65); color: #fdba74; }
+[data-md-color-scheme="slate"] .tx-btn-primary { background: #ea580c; color: #fff; border-color: #ea580c; }

@@ -1,0 +1,82 @@
+site_name: 2026 杭州国庆旅行计划
+site_description: 2026 年 10 月 2 日—6 日杭州五日行程：三套交通方案、预算与出行总控
+site_author: TheShadow178
+repo_url: https://github.com/TheShadow178/hangzhou-trip
+repo_name: TheShadow178/hangzhou-trip
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  language: zh
+  font: false
+  custom_dir: docs/overrides
+  favicon: assets/map.svg
+  logo: assets/map.svg
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: orange
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到浅色模式
+
+nav:
+  - 旅行计划（主文档）: index.md
+  - 三套交通方案明细: traffic.md
+  - 旅行预算: budget.md
+  - 交互地图: maps/index.html
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - path: javascripts/extra.js
+    type: module
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ja

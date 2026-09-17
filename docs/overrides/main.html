@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block tabs %}
+  {{ super() }}
+  {% if page.is_homepage %}
+  <section class="tx-hero">
+    <div class="tx-hero-inner">
+      <div class="tx-hero-badge">2026 · 国庆五日 · 杭州</div>
+      <h1 class="tx-hero-title">杭州国庆旅行计划</h1>
+      <p class="tx-hero-sub">10 月 2 日抵达 — 10 月 6 日返程 · 3 名成人 + 1 名老人 · 海创园入住四晚</p>
+      <p class="tx-hero-desc">大运河、城市阳台、西湖孤山、西溪湿地：三套可独立执行的交通方案、逐日时间线、<br class="tx-br">交互地图、预算与出行总控，全部整理在这一个站点里。</p>
+      <div class="tx-hero-actions">
+        <a class="tx-btn tx-btn-primary" href="{{ 'traffic/' | url }}">查看三套交通方案</a>
+        <a class="tx-btn" href="{{ 'maps/' | url }}">打开交互地图</a>
+        <a class="tx-btn" href="{{ 'budget/' | url }}">旅行预算</a>
+      </div>
+      <div class="tx-hero-chips">
+        <span><i style="background:#7c3aed"></i>10/2 抵达·小河直街</span>
+        <span><i style="background:#ea580c"></i>10/3 运河·钱江</span>
+        <span><i style="background:#2563eb"></i>10/4 西湖核心日</span>
+        <span><i style="background:#16a34a"></i>10/5 西溪湿地</span>
+        <span><i style="background:#dc2626"></i>10/6 返程</span>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+{% endblock %}

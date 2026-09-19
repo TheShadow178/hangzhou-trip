@@ -28,48 +28,67 @@
 ### 8.3 Mermaid 动线图
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'fontFamily':'-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif','lineColor':'#94a3b8','primaryColor':'#f8fafc','primaryBorderColor':'#cbd5e1','primaryTextColor':'#0f172a'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'fontFamily':'-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif','lineColor':'#94a3b8','primaryColor':'#ffffff','primaryBorderColor':'#94a3b8','primaryTextColor':'#0f172a','fontSize':'13px'}}}%%
 flowchart TB
-  subgraph T02["10 月 2 日｜抵达与可选夜游"]
+  subgraph T02["10 月 2 日 · 抵达与可选夜游"]
     direction LR
-    T02A["萧山机场"] -->|网约车| T02B["海创园酒店"] -->|短途车| T02C["新榆园晚饭"] -->|条件满足才去| T02D["小河直街"] -->|网约车| T02E["酒店"]
+    T02A(["✈️ 萧山机场"]) -->|网约车| T02B(["🏨 海创园酒店"])
+    T02B -->|短途车| T02C(["🍜 新榆园晚饭"])
+    T02C -.->|条件满足才去| T02D(["🌃 小河直街"])
+    T02D -->|网约车| T02E(["🏨 酒店"])
     T02C -. 取消夜游 .-> T02E
   end
-  subgraph T03["10 月 3 日｜大运河与钱塘江"]
+  subgraph T03["10 月 3 日 · 大运河与钱塘江"]
     direction LR
-    T03A["酒店"] -->|网约车| T03B["大运河博物馆"] --> T03C["知味观"] --> T03D["拱宸桥·桥西"] -->|网约车| T03E["万象城·外婆家"] -->|步行| T03F["城市阳台"] -->|网约车| T03G["酒店"]
+    T03A(["🏨 酒店"]) -->|网约车| T03B(["🏛 大运河博物馆"])
+    T03B --> T03C(["🍜 知味观"])
+    T03C --> T03D(["🏛 拱宸桥·桥西"])
+    T03D -->|网约车| T03E(["🍜 万象城·外婆家"])
+    T03E -->|步行| T03F(["🌃 城市阳台"])
+    T03F -->|网约车| T03G(["🏨 酒店"])
   end
-  subgraph T04["10 月 4 日｜西湖核心日"]
+  subgraph T04["10 月 4 日 · 西湖核心日"]
     direction LR
-    T04A["酒店"] -->|网约车| T04B["西泠桥定点"] --> T04C["孤山馆区"] --> T04D["楼外楼"] --> T04E["孤山·西泠印社·平湖秋月·白堤"] -->|网约车| T04F["乔村二十八道"] -->|网约车| T04G["酒店"]
+    T04A(["🏨 酒店"]) -->|网约车| T04B(["📍 西泠桥定点"])
+    T04B --> T04C(["🏛 孤山馆区"])
+    T04C --> T04D(["🍜 楼外楼"])
+    T04D --> T04E(["🏛 孤山·西泠印社·平湖秋月·白堤"])
+    T04E -->|网约车| T04F(["🍜 乔村二十八道"])
+    T04F -->|网约车| T04G(["🏨 酒店"])
   end
-  subgraph T05["10 月 5 日｜西溪湿地"]
+  subgraph T05["10 月 5 日 · 西溪湿地"]
     direction LR
-    T05A["酒店"] -->|网约车| T05B["周家村入口"] -->|电瓶船＋短步行| T05C["西溪主线"] -->|网约车| T05D["淳院午饭"] --> T05E["酒店午休"] --> T05F["兰记牛府"] --> T05G["酒店"]
+    T05A(["🏨 酒店"]) -->|网约车| T05B(["🚌 周家村入口"])
+    T05B -->|电瓶船＋短步行| T05C(["🏛 西溪主线"])
+    T05C -->|网约车| T05D(["🍜 淳院午饭"])
+    T05D --> T05E(["🏨 酒店午休"])
+    T05E --> T05F(["🍜 兰记牛府"])
+    T05F --> T05G(["🏨 酒店"])
   end
-  subgraph T06["10 月 6 日｜午饭与返程"]
+  subgraph T06["10 月 6 日 · 午饭与返程"]
     direction LR
-    T06A["酒店退房"] -->|网约车| T06B["墨绿 Art Space 文三路店"] -->|12:00 前离开| T06C["萧山机场 T3"]
+    T06A(["🏨 酒店退房"]) -->|网约车| T06B(["🍜 墨绿 Art Space"])
+    T06B -->|12:00 前离开| T06C(["✈️ 萧山机场 T3"])
   end
-  T02E -->|次日| T03A
-  T03G -->|次日| T04A
-  T04G -->|次日| T05A
-  T05G -->|次日| T06A
-class T02A,T06C cAir;
-class T02B,T02E,T03A,T03G,T04A,T04G,T05A,T05E,T05G,T06A cStay;
-class T02C,T03C,T03E,T04D,T04F,T05D,T05F,T06B cFood;
-class T02D,T03B,T03D,T03F,T04B,T04C,T04E,T05C cSee;
-class T05B cMove;
-style T02 fill:#f3e8ff,stroke:#7c3aed,stroke-width:1.5px,color:#0f172a
-style T03 fill:#ffedd5,stroke:#ea580c,stroke-width:1.5px,color:#0f172a
-style T04 fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#0f172a
-style T05 fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#0f172a
-style T06 fill:#fee2e2,stroke:#dc2626,stroke-width:1.5px,color:#0f172a
-classDef cAir fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
-classDef cStay fill:#f3e8ff,stroke:#7c3aed,color:#4c1d95
-classDef cFood fill:#ffedd5,stroke:#ea580c,color:#7c2d12
-classDef cSee fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
-classDef cMove fill:#ecfdf5,stroke:#0d9488,color:#134e4a
+  T02E -.->|次日| T03A
+  T03G -.->|次日| T04A
+  T04G -.->|次日| T05A
+  T05G -.->|次日| T06A
+  classDef cAir fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
+  classDef cStay fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#4c1d95
+  classDef cFood fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#7c2d12
+  classDef cSee fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+  classDef cMove fill:#d1fae5,stroke:#0d9488,stroke-width:2px,color:#134e4a
+  class T02A,T06C cAir
+  class T02B,T02E,T03A,T03G,T04A,T04G,T05A,T05E,T05G,T06A cStay
+  class T02C,T03C,T03E,T04D,T04F,T05D,T05F,T06B cFood
+  class T02D,T03B,T03D,T03F,T04B,T04C,T04E,T05C cSee
+  class T05B cMove
+  style T02 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style T03 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style T04 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style T05 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style T06 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
 ```
 
 ### 8.4 10 月 2 日｜机场、晚饭、可选小河直街夜游
@@ -168,48 +187,70 @@ classDef cMove fill:#ecfdf5,stroke:#0d9488,color:#134e4a
 ### 9.3 Mermaid 动线图
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'fontFamily':'-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif','lineColor':'#94a3b8','primaryColor':'#f8fafc','primaryBorderColor':'#cbd5e1','primaryTextColor':'#0f172a'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'fontFamily':'-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif','lineColor':'#94a3b8','primaryColor':'#ffffff','primaryBorderColor':'#94a3b8','primaryTextColor':'#0f172a','fontSize':'13px'}}}%%
 flowchart TB
-  subgraph C02["10 月 2 日｜取车与可选夜游"]
+  subgraph C02["10 月 2 日 · 取车与可选夜游"]
     direction LR
-    C02A["萧山机场"] --> C02B["取车"] -->|自驾| C02C["海创园酒店"] --> C02D["EFC 停车·新榆园"] -->|条件满足才去| C02E["小河直街外围停车"] --> C02F["酒店"]
+    C02A(["✈️ 萧山机场"]) --> C02B(["🚙 取车"])
+    C02B -->|自驾| C02C(["🏨 海创园酒店"])
+    C02C --> C02D(["🍜 EFC 停车·新榆园"])
+    C02D -.->|条件满足才去| C02E(["🅿️ 小河直街外围停车"])
+    C02E --> C02F(["🏨 酒店"])
     C02D -. 取消夜游 .-> C02F
   end
-  subgraph C03["10 月 3 日｜大运河与钱塘江"]
+  subgraph C03["10 月 3 日 · 大运河与钱塘江"]
     direction LR
-    C03A["酒店"] -->|自驾| C03B["运河广场停车"] --> C03C["博物馆·知味观·拱宸桥·桥西"] -->|自驾| C03D["万象城停车·外婆家"] -->|步行| C03E["城市阳台"] --> C03F["万象城取车"] --> C03G["酒店"]
+    C03A(["🏨 酒店"]) -->|自驾| C03B(["🅿️ 运河广场停车"])
+    C03B --> C03C(["🏛 博物馆·知味观·拱宸桥·桥西"])
+    C03C -->|自驾| C03D(["🍜 万象城停车·外婆家"])
+    C03D -->|步行| C03E(["🌃 城市阳台"])
+    C03E --> C03F(["🚙 万象城取车"])
+    C03F --> C03G(["🏨 酒店"])
   end
-  subgraph C04["10 月 4 日｜西湖核心日"]
+  subgraph C04["10 月 4 日 · 西湖核心日"]
     direction LR
-    C04A["酒店"] -->|自驾| C04B["西湖外围停车"] -->|官方接驳| C04C["孤山馆区"] --> C04D["楼外楼"] --> C04E["孤山·西泠印社·平湖秋月·白堤"] -->|接驳| C04F["外围取车"] --> C04G["乔村二十八道"] --> C04H["酒店"]
+    C04A(["🏨 酒店"]) -->|自驾| C04B(["🅿️ 西湖外围停车"])
+    C04B -->|官方接驳| C04C(["🏛 孤山馆区"])
+    C04C --> C04D(["🍜 楼外楼"])
+    C04D --> C04E(["🏛 孤山·西泠印社·平湖秋月·白堤"])
+    C04E -->|接驳| C04F(["🚙 外围取车"])
+    C04F --> C04G(["🍜 乔村二十八道"])
+    C04G --> C04H(["🏨 酒店"])
   end
-  subgraph C05["10 月 5 日｜西溪湿地"]
+  subgraph C05["10 月 5 日 · 西溪湿地"]
     direction LR
-    C05A["酒店"] -->|自驾| C05B["周家村停车"] -->|电瓶船＋短步行| C05C["西溪主线"] -->|自驾| C05D["淳院午饭"] --> C05E["酒店午休"] --> C05F["兰记牛府"] --> C05G["酒店"]
+    C05A(["🏨 酒店"]) -->|自驾| C05B(["🅿️ 周家村停车"])
+    C05B -->|电瓶船＋短步行| C05C(["🏛 西溪主线"])
+    C05C -->|自驾| C05D(["🍜 淳院午饭"])
+    C05D --> C05E(["🏨 酒店午休"])
+    C05E --> C05F(["🍜 兰记牛府"])
+    C05F --> C05G(["🏨 酒店"])
   end
-  subgraph C06["10 月 6 日｜还车与返程"]
+  subgraph C06["10 月 6 日 · 还车与返程"]
     direction LR
-    C06A["酒店退房"] -->|自驾| C06B["墨绿 Art Space 文三路店"] --> C06C["加油·机场还车"] -->|门店摆渡| C06D["萧山机场 T3"]
+    C06A(["🏨 酒店退房"]) -->|自驾| C06B(["🍜 墨绿 Art Space 文三路店"])
+    C06B --> C06C(["🚙 加油·机场还车"])
+    C06C -->|门店摆渡| C06D(["✈️ 萧山机场 T3"])
   end
-  C02F -->|次日| C03A
-  C03G -->|次日| C04A
-  C04H -->|次日| C05A
-  C05G -->|次日| C06A
-class C02A,C06C,C06D cAir;
-class C02B,C03B,C03F,C04B,C04F,C05B cMove;
-class C02C,C02F,C03A,C03G,C04A,C04H,C05A,C05E,C05G,C06A cStay;
-class C02D,C03C,C03D,C04D,C04G,C05D,C05F,C06B cFood;
-class C02E,C03E,C04C,C04E,C05C cSee;
-style C02 fill:#f3e8ff,stroke:#7c3aed,stroke-width:1.5px,color:#0f172a
-style C03 fill:#ffedd5,stroke:#ea580c,stroke-width:1.5px,color:#0f172a
-style C04 fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#0f172a
-style C05 fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#0f172a
-style C06 fill:#fee2e2,stroke:#dc2626,stroke-width:1.5px,color:#0f172a
-classDef cAir fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
-classDef cStay fill:#f3e8ff,stroke:#7c3aed,color:#4c1d95
-classDef cFood fill:#ffedd5,stroke:#ea580c,color:#7c2d12
-classDef cSee fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
-classDef cMove fill:#ecfdf5,stroke:#0d9488,color:#134e4a
+  C02F -.->|次日| C03A
+  C03G -.->|次日| C04A
+  C04H -.->|次日| C05A
+  C05G -.->|次日| C06A
+  classDef cAir fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
+  classDef cStay fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#4c1d95
+  classDef cFood fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#7c2d12
+  classDef cSee fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+  classDef cMove fill:#d1fae5,stroke:#0d9488,stroke-width:2px,color:#134e4a
+  class C02A,C06D cAir
+  class C02B,C03B,C03F,C04B,C04F,C05B,C06C cMove
+  class C02C,C02F,C03A,C03G,C04A,C04H,C05A,C05E,C05G,C06A cStay
+  class C02D,C03C,C03D,C04D,C04G,C05D,C05F,C06B cFood
+  class C02E,C03E,C04C,C04E,C05C cSee
+  style C02 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style C03 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style C04 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style C05 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style C06 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
 ```
 
 ### 9.4 10 月 2 日｜机场取车、晚饭、可选小河直街夜游
@@ -302,48 +343,67 @@ classDef cMove fill:#ecfdf5,stroke:#0d9488,color:#134e4a
 ### 10.3 Mermaid 动线图
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'fontFamily':'-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif','lineColor':'#94a3b8','primaryColor':'#f8fafc','primaryBorderColor':'#cbd5e1','primaryTextColor':'#0f172a'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'fontFamily':'-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif','lineColor':'#94a3b8','primaryColor':'#ffffff','primaryBorderColor':'#94a3b8','primaryTextColor':'#0f172a','fontSize':'13px'}}}%%
 flowchart TB
-  subgraph P02["10 月 2 日｜抵达与可选夜游"]
+  subgraph P02["10 月 2 日 · 抵达与可选夜游"]
     direction LR
-    P02A["萧山机场"] -->|地铁 19 号线| P02B["海创园站·酒店"] -->|公交或步行| P02C["新榆园晚饭"] -->|地铁＋公交| P02D["小河直街（可选）"] -->|公共交通| P02E["酒店"]
+    P02A(["✈️ 萧山机场"]) -->|地铁 19 号线| P02B(["🏨 海创园站·酒店"])
+    P02B -->|公交或步行| P02C(["🍜 新榆园晚饭"])
+    P02C -.->|地铁＋公交| P02D(["🌃 小河直街（可选）"])
+    P02D -->|公共交通| P02E(["🏨 酒店"])
     P02C -. 取消夜游 .-> P02E
   end
-  subgraph P03["10 月 3 日｜大运河与钱塘江"]
+  subgraph P03["10 月 3 日 · 大运河与钱塘江"]
     direction LR
-    P03A["酒店"] -->|地铁＋公交| P03B["大运河博物馆"] --> P03C["知味观"] --> P03D["拱宸桥·桥西"] -->|地铁| P03E["万象城·外婆家"] -->|步行| P03F["城市阳台"] -->|地铁| P03G["酒店"]
+    P03A(["🏨 酒店"]) -->|地铁＋公交| P03B(["🏛 大运河博物馆"])
+    P03B --> P03C(["🍜 知味观"])
+    P03C --> P03D(["🏛 拱宸桥·桥西"])
+    P03D -->|地铁| P03E(["🍜 万象城·外婆家"])
+    P03E -->|步行| P03F(["🌃 城市阳台"])
+    P03F -->|地铁| P03G(["🏨 酒店"])
   end
-  subgraph P04["10 月 4 日｜西湖核心日"]
+  subgraph P04["10 月 4 日 · 西湖核心日"]
     direction LR
-    P04A["酒店"] -->|地铁＋公交| P04B["西湖北线"] --> P04C["孤山馆区"] --> P04D["楼外楼"] --> P04E["孤山·西泠印社·平湖秋月·白堤"] -->|公交| P04F["乔村二十八道"] -->|公共交通| P04G["酒店"]
+    P04A(["🏨 酒店"]) -->|地铁＋公交| P04B(["🏛 西湖北线"])
+    P04B --> P04C(["🏛 孤山馆区"])
+    P04C --> P04D(["🍜 楼外楼"])
+    P04D --> P04E(["🏛 孤山·西泠印社·平湖秋月·白堤"])
+    P04E -->|公交| P04F(["🍜 乔村二十八道"])
+    P04F -->|公共交通| P04G(["🏨 酒店"])
   end
-  subgraph P05["10 月 5 日｜西溪湿地"]
+  subgraph P05["10 月 5 日 · 西溪湿地"]
     direction LR
-    P05A["酒店"] -->|公交| P05B["周家村入口"] -->|电瓶船＋短步行| P05C["西溪主线"] -->|公共交通| P05D["淳院午饭"] --> P05E["酒店午休"] --> P05F["兰记牛府"] --> P05G["酒店"]
+    P05A(["🏨 酒店"]) -->|公交| P05B(["🚌 周家村入口"])
+    P05B -->|电瓶船＋短步行| P05C(["🏛 西溪主线"])
+    P05C -->|公共交通| P05D(["🍜 淳院午饭"])
+    P05D --> P05E(["🏨 酒店午休"])
+    P05E --> P05F(["🍜 兰记牛府"])
+    P05F --> P05G(["🏨 酒店"])
   end
-  subgraph P06["10 月 6 日｜午饭与返程"]
+  subgraph P06["10 月 6 日 · 午饭与返程"]
     direction LR
-    P06A["酒店退房"] -->|地铁 19 号线| P06B["文三路站·墨绿"] -->|地铁 19 号线| P06C["萧山机场 T3"]
+    P06A(["🏨 酒店退房"]) -->|地铁 19 号线| P06B(["🍜 文三路站·墨绿"])
+    P06B -->|地铁 19 号线| P06C(["✈️ 萧山机场 T3"])
   end
-  P02E -->|次日| P03A
-  P03G -->|次日| P04A
-  P04G -->|次日| P05A
-  P05G -->|次日| P06A
-class P02A,P06C cAir;
-class P02B,P02E,P03A,P03G,P04A,P04G,P05A,P05E,P05G,P06A cStay;
-class P02C,P03C,P03E,P04D,P04F,P05D,P05F,P06B cFood;
-class P02D,P03B,P03D,P03F,P04B,P04C,P04E,P05C cSee;
-class P05B cMove;
-style P02 fill:#f3e8ff,stroke:#7c3aed,stroke-width:1.5px,color:#0f172a
-style P03 fill:#ffedd5,stroke:#ea580c,stroke-width:1.5px,color:#0f172a
-style P04 fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#0f172a
-style P05 fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#0f172a
-style P06 fill:#fee2e2,stroke:#dc2626,stroke-width:1.5px,color:#0f172a
-classDef cAir fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
-classDef cStay fill:#f3e8ff,stroke:#7c3aed,color:#4c1d95
-classDef cFood fill:#ffedd5,stroke:#ea580c,color:#7c2d12
-classDef cSee fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
-classDef cMove fill:#ecfdf5,stroke:#0d9488,color:#134e4a
+  P02E -.->|次日| P03A
+  P03G -.->|次日| P04A
+  P04G -.->|次日| P05A
+  P05G -.->|次日| P06A
+  classDef cAir fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
+  classDef cStay fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#4c1d95
+  classDef cFood fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#7c2d12
+  classDef cSee fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+  classDef cMove fill:#d1fae5,stroke:#0d9488,stroke-width:2px,color:#134e4a
+  class P02A,P06C cAir
+  class P02B,P02E,P03A,P03G,P04A,P04G,P05A,P05E,P05G,P06A cStay
+  class P02C,P03C,P03E,P04D,P04F,P05D,P05F,P06B cFood
+  class P02D,P03B,P03D,P03F,P04B,P04C,P04E,P05C cSee
+  class P05B cMove
+  style P02 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style P03 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style P04 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style P05 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
+  style P06 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
 ```
 
 ### 10.4 10 月 2 日｜机场、酒店、可选小河直街夜游

@@ -73,7 +73,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/vendor/mermaid.min.js
-  - javascripts/mermaid-bootstrap.js
+  - javascripts/mermaid-bootstrap-v2.js
 
 plugins:
   - search:

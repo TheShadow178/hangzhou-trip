@@ -72,8 +72,12 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
+  # 本地 Mermaid UMD：Material 主题自带 Mermaid 集成（DOMContentLoaded 时检测
+  # window.mermaid，存在即复用，不会从 unpkg CDN 加载），由主题负责 initialize
+  # 与渲染（SVG 注入 closed shadow root、自动适配明暗主题）。
+  # 不要另加 bootstrap 手动 run：会与主题集成争抢同一批节点，产生空文本
+  # UnknownDiagramError 报错。
   - javascripts/vendor/mermaid.min.js
-  - javascripts/mermaid-bootstrap-v2.js
 
 plugins:
   - search:

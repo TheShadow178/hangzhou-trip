@@ -244,10 +244,10 @@ flowchart TB
   classDef cSee fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
   classDef cMove fill:#d1fae5,stroke:#0d9488,stroke-width:2px,color:#134e4a
   class C02A,C06D cAir
-  class C02B,C03B,C03F,C04B,C04F,C05B,C06C cMove
+  class C02B,C03B,C03F,C04B,C05B,C06C cMove
   class C02C,C02F,C03A,C03G,C04A,C04H,C05A,C05E,C05G,C06A cStay
   class C02D,C03C,C03D,C04D,C04G,C05D,C05F,C06B cFood
-  class C02E,C03E,C04C,C04E,C05C cSee
+  class C02E,C03E,C04C,C05C cSee
   style C02 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
   style C03 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
   style C04 fill:#fafafa,stroke:#cbd5e1,stroke-width:1.5px,color:#475569
